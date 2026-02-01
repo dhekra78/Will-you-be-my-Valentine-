@@ -78,5 +78,10 @@ function handleNoClick() {
 }
 
 function handleYesClick() {
+  const audio = new Audio("congratulations.mp3");
+  audio.play();
+
+  setTimeout(() => {
     window.location.href = "yes_page.html";
+  }, 1200);
 }
