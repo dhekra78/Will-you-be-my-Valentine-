@@ -1,37 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knew you would say yes!</title>
-    <link rel="stylesheet" href="./yes_style.css">
-</head>
-<body>
-
-    <div class="container">
-        <h1>Yaaay!</h1>
-        <h2>Ali … you’re officially my Valentine 💕</h2>
-        <h3>I knew my Batman would say yes 🖤🦇</h3>
-        <h4>note: أتمنى إنك ضغطته برضاك بدون ما أستخدم الإجبار ☺️</h4>
-
-        <div class="gif_container">
-            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
-        </div>
-    </div>
-
     <!-- 🔊 الصوت -->
-    <audio id="loveSound">
+    <audio id="loveSound" preload="auto">
         <source src="congratulations.mp3" type="audio/mpeg">
     </audio>
 
-    <script>
-        window.addEventListener("load", () => {
-            const sound = document.getElementById("loveSound");
-            sound.play().catch(() => {
-                // في بعض الأجهزة لو ما اشتغل، هذا طبيعي
-            });
-        });
-    </script>
+    <!-- زر احتياطي لو الجوال منع التشغيل -->
+    <button id="playSoundBtn" style="
+        display:none;
+        margin-top:16px;
+        padding:12px 18px;
+        font-size:16px;
+        border:none;
+        border-radius:12px;
+        cursor:pointer;
+    ">
+        🔊 اضغط لتشغيل الصوت
+    </button>
 
-</body>
-</html>
+    <script>
+        window.addEventListener("load", async () => {
+            const sound = document.getElementById("loveSound");
+            const btn = document.getElementById("playSoundBtn");
+
+            try {
+                await sound.play(); // محاولة تشغيل تلقائي
+            } catch (e) {
+                // الجوال منع التشغيل → نطلع الزر
+                btn.style.display = "inline-block";
+            }
+
+            btn.a
